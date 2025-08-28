@@ -1,0 +1,27 @@
+long long strangeGrid(long long r, long long c) {
+    long long block = (r - 1) / 2;
+    long long base = block * 10LL;
+    long long offset = (c - 1) * 2LL;
+    if (r % 2 == 0)
+        return base + offset + 1LL;
+    else
+        return base + offset;
+}
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    char** first_multiple_input = split_string(rtrim(readline()));
+
+    long long r = parse_long_long(*(first_multiple_input + 0));
+    long long c = parse_long_long(*(first_multiple_input + 1));
+
+    long long result = strangeGrid(r, c);
+
+    fprintf(fptr, "%lld\n", result);
+
+    fclose(fptr);
+
+    return 0;
+}

@@ -1,0 +1,57 @@
+#include <assert.h>
+#include <ctype.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* readline();
+char* ltrim(char*);
+char* rtrim(char*);
+char** split_string(char*);
+
+int parse_int(char*);
+
+/*
+ * Complete the 'saveThePrisoner' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER m
+ *  3. INTEGER s
+ */
+
+int saveThePrisoner(int n, int m, int s) {
+    int result = (s - 1 + m - 1) % n + 1;
+    return result;
+}
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    int t = parse_int(ltrim(rtrim(readline())));
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        char** first_multiple_input = split_string(rtrim(readline()));
+
+        int n = parse_int(*(first_multiple_input + 0));
+
+        int m = parse_int(*(first_multiple_input + 1));
+
+        int s = parse_int(*(first_multiple_input + 2));
+
+        int result = saveThePrisoner(n, m, s);
+
+        fprintf(fptr, "%d\n", result);
+    }
+
+    fclose(fptr);
+
+    return 0;
+}

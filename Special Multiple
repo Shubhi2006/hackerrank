@@ -1,0 +1,19 @@
+string solve(int n) {
+    string ans;
+    queue<long long>q;
+    q.push(9);
+    while(q.size() !=0){
+        long long x=q.front();
+        q.pop();
+        if(x%n==0){
+            ans=to_string(x);
+            break;
+        }
+        else{
+            q.push(x*10);
+            q.push(x*10+9);
+        }
+        
+    }
+    return ans;
+}

@@ -1,0 +1,10 @@
+def gradingStudents(grades):
+    arr=[0]*len(grades)
+    for i in range(len(grades)):
+        if(grades[i]<38):
+            arr[i]=grades[i]
+        elif((grades[i]%5)>=3):
+            arr[i]=grades[i]+(5-grades[i]%5)
+        else:
+            arr[i]=grades[i]
+    return arr

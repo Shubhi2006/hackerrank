@@ -1,0 +1,14 @@
+public static int substrings(String n) {
+        long MOD = 1000000007;
+        long prev = n.charAt(0) - '0';
+        long ans = prev;
+
+        for (int i = 1; i < n.length(); i++) {
+            long digit = n.charAt(i) - '0';
+
+            long curr = (prev * 10 + (i + 1) * digit) % MOD;
+
+            ans = (ans + curr) % MOD;
+            prev = curr;
+    }
+    return (int)ans;
